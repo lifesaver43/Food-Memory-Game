@@ -2,8 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
       //card options
       const cardArray = [
             {
-                  name: "fries",
-                  img: "/images/fries.png"
+              name: "fries",
+              img: "/images/fries.png"
             },
             {
               name: 'cheeseburger',
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
         cardsChosenIds.push(cardId)
         this.setAttribute("src", cardArray[cardId].img)
         if(cardsChosen.length === 2) {
-          setTimeout(checkForMatch, 500)
+          setTimeout(checkForMatch, 5)
         }
         console.log(cardsChosenIds)
       }
@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
           cards[optionOneId].removeEventListener("click", flipCard)
           cards[optionTwoId].removeEventListener("click", flipCard)
           cardsWon.push(cardsChosen)
-        } else {
+        } else if(cardsChosen[0] != cardsChosen[1]) {
           cards[optionOneId].setAttribute("src", "/images/blank.png")
           cards[optionTwoId].setAttribute("src", "/images/blank.png")
           alert("Sorry, try again")
