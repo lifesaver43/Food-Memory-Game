@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
         cardsChosenIds.push(cardId)
         this.setAttribute("src", cardArray[cardId].img)
         if(cardsChosen.length === 2) {
-          setTimeout(checkForMatch, 5)
+          setTimeout(checkForMatch, 500)
         }
         console.log(cardsChosenIds)
       }
@@ -87,13 +87,18 @@ document.addEventListener("DOMContentLoaded", () => {
         const cards = document.querySelectorAll("img")
         const optionOneId = cardsChosenIds[0];
         const optionTwoId = cardsChosenIds[1];
+        let lastTxt = document.querySelector("h2")
 
         if(optionOneId == optionTwoId) {
-          alert("You have clicked the same image!")
+          // alert("You have clicked the same image!")
+          lastTxt.style.color = "red"
+          lastTxt.innerHTML = "You have clicked the same image!!"
           cards[optionOneId].setAttribute("src", "/images/blank.png")
           cards[optionTwoId].setAttribute("src", "/images/blank.png")
         } else if (cardsChosen[0] === cardsChosen[1]) {
-          alert("You have found a match!")
+          // alert("You have found a match!")
+          lastTxt.style.color = "blue"
+          lastTxt.innerHTML = "You have found a match!"
           cards[optionOneId].setAttribute("src", "/images/white.png")
           cards[optionTwoId].setAttribute("src", "/images/white.png")
           cards[optionOneId].removeEventListener("click", flipCard)
@@ -102,7 +107,9 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if(cardsChosen[0] != cardsChosen[1]) {
           cards[optionOneId].setAttribute("src", "/images/blank.png")
           cards[optionTwoId].setAttribute("src", "/images/blank.png")
-          alert("Sorry, try again")
+          // alert("Sorry, try again")
+          lastTxt.style.color = "red"
+          lastTxt.innerHTML = "Sorry, try again"
         }
 
         cardsChosen = []
